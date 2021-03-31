@@ -1,11 +1,15 @@
 package com.example.dogopedia.ui.home;
 
+import android.graphics.Bitmap;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Dog{
     public Map<String, String> attributes = new HashMap<String, String>();
-    Dog(String name, String size, String living, String experience, String alone, String cold, String heat, String shedding, String exercise, String bark, String groom){
+    public Bitmap image;
+
+    Dog(String name, String size, String living, String experience, String alone, String cold, String heat, String shedding, String exercise, String bark, String groom, Bitmap image){
         attributes.put("size", size);
         attributes.put("name",name);
         attributes.put("living",living);
@@ -17,6 +21,8 @@ public class Dog{
         attributes.put("exercise",exercise);
         attributes.put("bark",bark);
         attributes.put("groom",groom);
+        this.image = image;
+
     }
 
     @Override

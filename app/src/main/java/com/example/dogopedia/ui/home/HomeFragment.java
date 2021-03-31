@@ -1,11 +1,13 @@
 package com.example.dogopedia.ui.home;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +18,7 @@ import com.example.dogopedia.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 public class HomeFragment extends Fragment {
 
@@ -31,11 +34,16 @@ public class HomeFragment extends Fragment {
     static Button option1, option2;
     static String[] questionList = new String[3];
     static TextView textView;
+    static ImageView imageView;
+    static TextView resultView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         textView = (TextView) root.findViewById(R.id.text_home);
+        imageView = (ImageView) root.findViewById(R.id.imageView);
+        resultView = (TextView) root.findViewById(R.id.resultView);
+        resultView.setVisibility(View.GONE);
         answer = "";
         question = "";
         button1text = "";
@@ -88,6 +96,7 @@ public class HomeFragment extends Fragment {
         quizStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                imageView.setVisibility(View.GONE);
                 if(currentPool.get(0).getAttribute(question).equals("Either")){
                     option1.setText("Apartment");
                 } else{
@@ -112,23 +121,24 @@ public class HomeFragment extends Fragment {
         currentPool = updatePool(currentPool, q, answer);
         if(currentPool.size() != 1){
             question = currentPool.get(0).compare(currentPool.get(pointer));
-            System.out.println("Dog 1: " +currentPool.get(0));
-            System.out.println("Dog 2: " + currentPool.get(pointer));
-            System.out.println("this is the question: " + question);
             while(!questionBank.containsKey(question) && pointer != currentPool.size() - 1) {
                 pointer++;
                 question = currentPool.get(0).compare(currentPool.get(pointer));
-                System.out.println(pointer);
-                System.out.println(currentPool.size());
-                System.out.println("gereerererrerererere");
             }
-            System.out.println("here asda sdasd asd asdasd " + question);
             if(!questionBank.containsKey(question)){
                 finishQuiz();
 
             } else {
-                questionList[0] = currentPool.get(0).getAttribute(question);
-                questionList[1] = currentPool.get(pointer).getAttribute(question);
+                if(currentPool.get(0).getAttribute(question).equals("Either")){
+                    questionList[0]="Either";
+                } else {
+                    questionList[0] = currentPool.get(0).getAttribute(question);
+                }
+                if(currentPool.get(1).getAttribute(question).equals("Either")){
+                    questionList[1]="Either";
+                } else {
+                    questionList[1] = currentPool.get(0).getAttribute(question);
+                }
                 pointer = 1;
                 updateButtons();
             }
@@ -147,12 +157,19 @@ public class HomeFragment extends Fragment {
     }
 
     private static void finishQuiz(){
+        int place = 0;
         option1.setVisibility(View.GONE);
         option2.setVisibility(View.GONE);
-        String placeholder = currentPool.toString();
-        textView.setText(placeholder);
-        System.out.println(placeholder);
-        Log.v("quizFinished", "The quiz is finished");
+        if(currentPool.size() != 1){
+            Random gen = new Random();
+            place = gen.nextInt(currentPool.size());
+        }
+        textView.setVisibility(View.GONE);
+        imageView.setImageBitmap(currentPool.get(place).image);
+        imageView.setVisibility(View.VISIBLE);
+        String placeholder = currentPool.get(place).toString();
+        resultView.setText(placeholder);
+        resultView.setVisibility(View.VISIBLE);
     }
 
     private static ArrayList<Dog> updatePool(ArrayList<Dog> pool, String question, String answer){
@@ -190,62 +207,62 @@ public class HomeFragment extends Fragment {
         return pool;
     }
 
-    private static void initialize(ArrayList<Dog> pool){
-        Dog LabradorRetriever = new Dog("Labrador Retriever", "Large", "House", "New", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes");
-        Dog FrenchBulldog = new Dog("French Bulldog", "Small", "Either", "New", "No", "No","No","Yes","No","Yes","Yes");
-        Dog GermanShepard = new Dog("German Shepard", "Large", "Either", "Experienced", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "No");
+    private void initialize(ArrayList<Dog> pool){
+        Dog LabradorRetriever = new Dog("Labrador Retriever", "Large", "House", "New", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", BitmapFactory.decodeResource(getResources(), R.drawable.labrador_retriever));
+        Dog FrenchBulldog = new Dog("French Bulldog", "Small", "Either", "New", "No", "No","No","Yes","No","Yes","Yes",BitmapFactory.decodeResource(getResources(), R.drawable.french_bulldog));
+        Dog GermanShepard = new Dog("German Shepard", "Large", "Either", "Experienced", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "No",BitmapFactory.decodeResource(getResources(), R.drawable.german_shepherd));
         pool.add(GermanShepard);
-        Dog BullDog = new Dog("Bulldog", "Small", "Either", "New", "Yes","No", "No","Yes","Yes","Yes","Yes");
-        Dog GoldenRetriever = new Dog("Golden Retriever", "Large", "House", "New", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "No");
+        Dog BullDog = new Dog("Bulldog", "Small", "Either", "New", "Yes","No", "No","Yes","Yes","Yes","Yes",BitmapFactory.decodeResource(getResources(), R.drawable.bulldog));
+        Dog GoldenRetriever = new Dog("Golden Retriever", "Large", "House", "New", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "No",BitmapFactory.decodeResource(getResources(), R.drawable.golden_retriever));
         pool.add(GoldenRetriever);
-        Dog Poodle = new Dog("Poodle", "Large", "Either", "New", "No", "Yes", "Yes", "No", "Yes", "No", "No");
-        Dog Beagle = new Dog("Beagle", "Small", "Either", "New", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes");
+        Dog Poodle = new Dog("Poodle", "Large", "Either", "New", "No", "Yes", "Yes", "No", "Yes", "No", "No",BitmapFactory.decodeResource(getResources(), R.drawable.poodle));
+        Dog Beagle = new Dog("Beagle", "Small", "Either", "New", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes",BitmapFactory.decodeResource(getResources(), R.drawable.beagle));
         pool.add(Beagle);
-        Dog Rottweiler = new Dog("Rottweiler", "Large", "House", "Experienced", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes");
+        Dog Rottweiler = new Dog("Rottweiler", "Large", "House", "Experienced", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes",BitmapFactory.decodeResource(getResources(), R.drawable.rottweiler));
         pool.add(Rottweiler);
-        Dog Pointer = new Dog("Pointer", "Large", "House", "Experienced", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes");
+        Dog Pointer = new Dog("Pointer", "Large", "House", "Experienced", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes",BitmapFactory.decodeResource(getResources(), R.drawable.pointer));
         pool.add(Pointer);
-        Dog Dachshund = new Dog("Dachshund","Small", "Either", "New", "Yes", "No", "Yes", "Yes", "Yes", "Yes", "Yes");
+        Dog Dachshund = new Dog("Dachshund","Small", "Either", "New", "Yes", "No", "Yes", "Yes", "Yes", "Yes", "Yes",BitmapFactory.decodeResource(getResources(), R.drawable.dachshund));
         pool.add(Dachshund);
-        Dog Corgi = new Dog("Corgi", "Small", "Either", "New", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes");
+        Dog Corgi = new Dog("Corgi", "Small", "Either", "New", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes",BitmapFactory.decodeResource(getResources(), R.drawable.corgi));
         pool.add(Corgi);
-        Dog AustralianShepherd = new Dog("Austrialian Sheperd", "Large", "House", "Experienced", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "No");
+        Dog AustralianShepherd = new Dog("Austrialian Sheperd", "Large", "House", "Experienced", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "No",BitmapFactory.decodeResource(getResources(), R.drawable.australian_shepherd));
         pool.add(AustralianShepherd);
-        Dog Yorkie = new Dog("Yorkie", "Small", "Either", "New", "No", "No", "No", "No", "Yes", "Yes", "No");
+        Dog Yorkie = new Dog("Yorkshire Terrier", "Small", "Either", "New", "No", "No", "No", "No", "Yes", "Yes", "No",BitmapFactory.decodeResource(getResources(), R.drawable.yorkshire_terrier));
         pool.add(Yorkie);
-        Dog Boxer = new Dog("Boxer", "Large", "Either", "New", "No", "No","No", "No","Yes","Yes","No");
+        Dog Boxer = new Dog("Boxer", "Large", "Either", "New", "No", "No","No", "No","Yes","Yes","No",BitmapFactory.decodeResource(getResources(), R.drawable.boxer));
         pool.add(Boxer);
-        Dog GreatDane = new Dog("Great Dane", "Large", "House", "Experienced", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes");
+        Dog GreatDane = new Dog("Great Dane", "Large", "House", "Experienced", "No", "No", "Yes", "Yes", "Yes", "Yes", "Yes",BitmapFactory.decodeResource(getResources(), R.drawable.great_dane));
         pool.add(GreatDane);
-        Dog SiberianHusky = new Dog("Siberian Husky", "Large", "House", "Experienced", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "No");
+        Dog SiberianHusky = new Dog("Siberian Husky", "Large", "House", "Experienced", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "No",BitmapFactory.decodeResource(getResources(), R.drawable.siberian_husky));
         pool.add(SiberianHusky);
-        Dog DobermanPinscher = new Dog("Doberman Pinscher", "Large", "Either", "New", "No", "No", "Yes", "Yes", "Yes", "No", "Yes");
+        Dog DobermanPinscher = new Dog("Doberman Pinscher", "Large", "Either", "New", "No", "No", "Yes", "Yes", "Yes", "No", "Yes",BitmapFactory.decodeResource(getResources(), R.drawable.doberman_pinscher));
         pool.add(DobermanPinscher);
-        Dog MiniSchnauzer = new Dog("Mini Schnauzer",  "Small", "Either", "New", "Yes", "Yes", "Yes", "No", "Yes", "Yes", "No");
+        Dog MiniSchnauzer = new Dog("Mini Schnauzer",  "Small", "Either", "New", "Yes", "Yes", "Yes", "No", "Yes", "Yes", "No",BitmapFactory.decodeResource(getResources(), R.drawable.mini_schnauzer));
         pool.add(MiniSchnauzer);
-        Dog ShihTzu = new Dog("Shih Tzu", "Small", "Either", "New", "Yes", "Yes", "No", "Yes", "No", "No", "No");
+        Dog ShihTzu = new Dog("Shih Tzu", "Small", "Either", "New", "Yes", "Yes", "No", "Yes", "No", "No", "No", BitmapFactory.decodeResource(getResources(), R.drawable.shih_tzu));
         pool.add(ShihTzu);
-        Dog BostonTerrier = new Dog("Boston Terrier", "Small", "Either", "New", "Yes", "Yes", "No", "No", "Yes", "Yes", "Yes");
+        Dog BostonTerrier = new Dog("Boston Terrier", "Small", "Either", "New", "Yes", "Yes", "No", "No", "Yes", "Yes", "Yes",BitmapFactory.decodeResource(getResources(), R.drawable.boston_terrier));
         pool.add(BostonTerrier);
-        Dog BerneseMountain = new Dog("Bernese Mountain Dog", "Large", "House", "Experienced", "No", "Yes", "No", "Yes", "Yes", "Yes" ,"Yes");
+        Dog BerneseMountain = new Dog("Bernese Mountain Dog", "Large", "House", "Experienced", "No", "Yes", "No", "Yes", "Yes", "Yes" ,"Yes",BitmapFactory.decodeResource(getResources(), R.drawable.bernese_mountain_dog));
         pool.add(BerneseMountain);
-        Dog Pomeranian = new Dog("Pomeranian", "Small", "Either", "New", "No", "Yes", "No" ,"Yes", "No", "Yes", "No");
+        Dog Pomeranian = new Dog("Pomeranian", "Small", "Either", "New", "No", "Yes", "No" ,"Yes", "No", "Yes", "No",BitmapFactory.decodeResource(getResources(), R.drawable.pomeranian));
         pool.add(Pomeranian);
-        Dog Havanese = new Dog("Havanese", "Small", "Either", "New", "No", "No", "Yes", "No", "No", "Yes", "No");
+        Dog Havanese = new Dog("Havanese", "Small", "Either", "New", "No", "No", "Yes", "No", "No", "Yes", "No",BitmapFactory.decodeResource(getResources(), R.drawable.havanese));
         pool.add(Havanese);
-        Dog Maltese = new Dog("Maltese", "Small", "Either", "New", "No", "No", "Yes", "No", "No", "Yes", "No");
+        Dog Maltese = new Dog("Maltese", "Small", "Either", "New", "No", "No", "Yes", "No", "No", "Yes", "No",BitmapFactory.decodeResource(getResources(), R.drawable.maltese));
         pool.add(Maltese);
-        Dog Pug = new Dog("Pug", "Small", "Either", "New", "No", "No", "No", "Yes", "Yes", "No", "Yes");
+        Dog Pug = new Dog("Pug", "Small", "Either", "New", "No", "No", "No", "Yes", "Yes", "No", "Yes", BitmapFactory.decodeResource(getResources(), R.drawable.pug));
         pool.add(Pug);
-        Dog CockerSpaniel = new Dog("Cocker Spaniel", "Small", "Either", "New", "No", "Yes", "Yes", "Yes", "Yes", "Yes","No");
+        Dog CockerSpaniel = new Dog("Cocker Spaniel", "Small", "Either", "New", "No", "Yes", "Yes", "Yes", "Yes", "Yes","No",BitmapFactory.decodeResource(getResources(), R.drawable.cocker_spaniel));
         pool.add(CockerSpaniel);
-        Dog BorderCollie = new Dog("Border Collie", "Large", "House", "Experienced", "No", "Yes", "Yes", "Yes", "Yes", "No","Yes");
+        Dog BorderCollie = new Dog("Border Collie", "Large", "House", "Experienced", "No", "Yes", "Yes", "Yes", "Yes", "No","Yes",BitmapFactory.decodeResource(getResources(), R.drawable.border_collie));
         pool.add(BorderCollie);
-        Dog Mastiff = new Dog("Mastiff", "Large", "House", "Experienced", "Yes", "Yes" ,"No", "Yes", "Yes", "No", "Yes");
+        Dog Mastiff = new Dog("Mastiff", "Large", "House", "Experienced", "Yes", "Yes" ,"No", "Yes", "Yes", "No", "Yes",BitmapFactory.decodeResource(getResources(), R.drawable.mastiff));
         pool.add(Mastiff);
-        Dog Chihuahua = new Dog("Chihuahua", "Small", "Either", "New" ,"No" ,"No", "No" ,"No", "No" ,"Yes", "Yes");
+        Dog Chihuahua = new Dog("Chihuahua", "Small", "Either", "New" ,"No" ,"No", "No" ,"No", "No" ,"Yes", "Yes",BitmapFactory.decodeResource(getResources(), R.drawable.chihuahua));
         pool.add(Chihuahua);
-        Dog ShibaInu = new Dog("Shiba Inu", "Large" ,"Either" ,"Experienced", "Yes" ,"Yes", "Yes", "Yes", "Yes", "Yes", "Yes");
+        Dog ShibaInu = new Dog("Shiba Inu", "Large" ,"Either" ,"Experienced", "Yes" ,"Yes", "Yes", "Yes", "Yes", "Yes", "Yes",BitmapFactory.decodeResource(getResources(), R.drawable.shiba_inu));
         pool.add(ShibaInu);
         pool.add(Poodle);
         pool.add(LabradorRetriever);
