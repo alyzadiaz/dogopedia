@@ -5,4 +5,16 @@
     <string name="title_notifications">Notifications</string>
     <string name="option_1">Option 1</string>
     <string name="option_2">Option 2</string>
+
+    <string name="apt_adapt">Apartment Adaptability</string>
+    <string name="owner_exp">Good for New Owners</string>
+    <string name="alone_tolerance">Tolerance for Being Alone</string>
+    <string name="cold_tolerance">Cold Tolerance</string>
+    <string name="heat_tolerance">Heat Tolerance</string>
+    <string name="shedding">Shedding Level</string>
+    <string name="exercise">Exercise Level</string>
+    <string name="bark_howl">Barking and Howling Tendency</string>
+    <string name="grooming">Grooming Ease</string>
+
+    <string name="img_desc">Dog</string>
 </resources>
