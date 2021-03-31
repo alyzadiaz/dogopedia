@@ -1,21 +1,20 @@
 package com.example.dogopedia.ui.dashboard;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.dogopedia.R;
-import com.example.dogopedia.ui.dashboard.ListItem;
 
 import java.util.List;
 
 public class ListItemAdapter extends BaseAdapter{
-    private LayoutInflater mInflater;
+    private final LayoutInflater mInflater;
     private static List<ListItem> list;
 
     public ListItemAdapter(Context context, List<ListItem> results){
@@ -40,14 +39,14 @@ public class ListItemAdapter extends BaseAdapter{
 
     public View getView(int position, View convertView, ViewGroup parent){
         ListItem item = (ListItem) getItem(position);
-        View view = mInflater.inflate(R.layout.list_item, null);
+        @SuppressLint({"InflateParams", "ViewHolder"}) View view = mInflater.inflate(R.layout.list_item, null);
 
         ImageView image;
-        image = (ImageView) view.findViewById(R.id.image);
+        image = view.findViewById(R.id.image);
         image.setImageBitmap(item.image);
 
         TextView name;
-        name = (TextView) view.findViewById(R.id.label);
+        name = view.findViewById(R.id.label);
         name.setText(item.label);
 
         return view;
