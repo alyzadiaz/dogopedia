@@ -1,5 +1,6 @@
 package com.example.dogopedia.ui.dashboard;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -13,26 +14,22 @@ import android.widget.TextView;
 
 import com.example.dogopedia.R;
 
-public class Popup {
-
+public class Popup extends PopupWindow{
 
     public void showPopUpWindow(View view, ListItem item){
         view.getContext();
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View pop = inflater.inflate(R.layout.popup, null);
-
-        String test = item.label;
-        System.out.println(test);
+        @SuppressLint("InflateParams") View pop = inflater.inflate(R.layout.popup, null);
 
         ImageView img;
         TextView name, size;
         RatingBar apt, alone, exp, cold, heat, shed, exercise, bark_howl, grooming;
 
         img = pop.findViewById(R.id.dog_image);
-        img.setImageBitmap(item.image);
+        img.setBackgroundResource(item.image);
 
         name = pop.findViewById(R.id.dog_breed);
-        name.setText(test);
+        name.setText(item.label);
         size = pop.findViewById(R.id.dog_size);
         size.setText(item.size);
 
@@ -54,7 +51,6 @@ public class Popup {
         bark_howl.setRating(item.bark_howl);
         grooming = pop.findViewById(R.id.groom_rating);
         grooming.setRating(item.grooming);
-
 
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;

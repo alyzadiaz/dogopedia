@@ -1,35 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dip"
+        app:cardBackgroundColor="@color/snow"
+        app:cardCornerRadius="25dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
 
+            <androidx.cardview.widget.CardView
+                android:layout_width="200dip"
+                android:layout_height="200dip"
+                android:layout_gravity="center"
+                android:layout_marginStart="75dip"
+                android:layout_marginLeft="75dip"
+                android:layout_marginTop="25dip"
+                android:layout_marginEnd="75dip"
+                android:layout_marginRight="75dip"
+                android:layout_marginBottom="25dip"
+                android:padding="25dip"
+                app:cardCornerRadius="20dp">
 
-            <ImageView
-                android:id="@+id/dog_image"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="30dp"
-                tools:srcCompat="@tools:sample/avatars"
-                android:contentDescription="@string/img_desc" />
+                <ImageView
+                    android:id="@+id/dog_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/img_desc"
+                    android:padding="30dp"
+                    tools:srcCompat="@tools:sample/avatars" />
+            </androidx.cardview.widget.CardView>
 
             <TextView
                 android:id="@+id/dog_breed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/dog_size"
@@ -53,7 +72,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="@string/apt_adapt" />
+                        android:text="@string/apt_adapt"
+                        android:textSize="12sp" />
 
                     <RatingBar
                         android:id="@+id/apartment_rating"
@@ -61,7 +81,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:isIndicator="true"
-                        android:numStars="5" />
+                        android:numStars="5"
+                        android:theme="@style/ratingbar" />
 
                 </TableRow>
 
@@ -76,7 +97,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="@string/owner_exp" />
+                        android:text="@string/owner_exp"
+                        android:textSize="12sp" />
 
                     <RatingBar
                         android:id="@+id/exp_rating"
@@ -84,7 +106,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:isIndicator="true"
-                        android:numStars="5" />
+                        android:numStars="5"
+                        android:theme="@style/ratingbar" />
                 </TableRow>
 
                 <TableRow
@@ -98,7 +121,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="@string/alone_tolerance" />
+                        android:text="@string/alone_tolerance"
+                        android:textSize="12sp" />
 
                     <RatingBar
                         android:id="@+id/alone_rating"
@@ -106,7 +130,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:isIndicator="true"
-                        android:numStars="5" />
+                        android:numStars="5"
+                        android:theme="@style/ratingbar" />
                 </TableRow>
 
                 <TableRow
@@ -120,7 +145,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="@string/cold_tolerance" />
+                        android:text="@string/cold_tolerance"
+                        android:textSize="12sp" />
 
                     <RatingBar
                         android:id="@+id/cold_rating"
@@ -128,7 +154,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:isIndicator="true"
-                        android:numStars="5" />
+                        android:numStars="5"
+                        android:theme="@style/ratingbar" />
                 </TableRow>
 
                 <TableRow
@@ -142,14 +169,16 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="@string/heat_tolerance" />
+                        android:text="@string/heat_tolerance"
+                        android:textSize="12sp" />
 
                     <RatingBar
                         android:id="@+id/heat_rating"
                         style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:numStars="5" />
+                        android:numStars="5"
+                        android:theme="@style/ratingbar" />
                 </TableRow>
 
                 <TableRow
@@ -163,7 +192,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="@string/shedding" />
+                        android:text="@string/shedding"
+                        android:textSize="12sp" />
 
                     <RatingBar
                         android:id="@+id/shedding_rating"
@@ -171,7 +201,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:isIndicator="true"
-                        android:numStars="5" />
+                        android:numStars="5"
+                        android:theme="@style/ratingbar" />
                 </TableRow>
 
                 <TableRow
@@ -185,7 +216,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="@string/exercise" />
+                        android:text="@string/exercise"
+                        android:textSize="12sp" />
 
                     <RatingBar
                         android:id="@+id/exercise_rating"
@@ -193,7 +225,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:isIndicator="true"
-                        android:numStars="5" />
+                        android:numStars="5"
+                        android:theme="@style/ratingbar" />
                 </TableRow>
 
                 <TableRow
@@ -207,7 +240,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="@string/bark_howl" />
+                        android:text="@string/bark_howl"
+                        android:textSize="12sp" />
 
                     <RatingBar
                         android:id="@+id/bark_howl_rating"
@@ -215,7 +249,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:isIndicator="true"
-                        android:numStars="5" />
+                        android:numStars="5"
+                        android:theme="@style/ratingbar" />
                 </TableRow>
 
                 <TableRow
@@ -229,7 +264,8 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="@string/grooming" />
+                        android:text="@string/grooming"
+                        android:textSize="12sp" />
 
                     <RatingBar
                         android:id="@+id/groom_rating"
@@ -237,7 +273,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:isIndicator="true"
-                        android:numStars="5" />
+                        android:numStars="5"
+                        android:theme="@style/ratingbar" />
                 </TableRow>
             </TableLayout>
         </LinearLayout>
