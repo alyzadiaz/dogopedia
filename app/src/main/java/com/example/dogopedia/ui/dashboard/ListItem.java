@@ -1,9 +1,7 @@
 package com.example.dogopedia.ui.dashboard;
 
-import android.graphics.Bitmap;
-
 public class ListItem {
-    public Bitmap image;
+    public int image;
     public String label, size;
 
     public float apt, alone, exp, cold, heat, shed, exercise, bark_howl, grooming;

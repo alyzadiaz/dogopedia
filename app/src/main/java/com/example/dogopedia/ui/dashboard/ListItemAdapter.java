@@ -1,54 +1,63 @@
 package com.example.dogopedia.ui.dashboard;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.dogopedia.R;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class ListItemAdapter extends BaseAdapter{
-    private final LayoutInflater mInflater;
-    private static List<ListItem> list;
+public class ListItemAdapter extends RecyclerView.Adapter<ListItemAdapter.CustomViewHolder> {
+    //private LayoutInflater mInflater;
+    private final List<ListItem> cards;
 
-    public ListItemAdapter(Context context, List<ListItem> results){
-        list = results;
-        mInflater = LayoutInflater.from(context);
+    public ListItemAdapter(List<ListItem> cards){
+        this.cards = cards;
+    }
+
+    @NotNull
+    @Override
+    public ListItemAdapter.CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
+        return new CustomViewHolder(view);
     }
 
     @Override
-    public int getCount() {
-        return list.size();
+    public void onBindViewHolder(ListItemAdapter.CustomViewHolder holder, final int position){
+        final ListItem card = cards.get(position);
+
+        holder.label.setText(card.label);
+        holder.img.setBackgroundResource(card.image);
+
+        holder.cardView.setOnClickListener(v -> {
+            Popup popup = new Popup();
+            popup.showPopUpWindow(v, card);
+        });
     }
 
     @Override
-    public Object getItem(int position) {
-        return list.get(position);
+    public int getItemCount(){
+        return cards.size();
     }
 
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
+    public static class CustomViewHolder extends RecyclerView.ViewHolder{
+        private final TextView label;
+        private final ImageView img;
+        private final CardView cardView;
 
-    public View getView(int position, View convertView, ViewGroup parent){
-        ListItem item = (ListItem) getItem(position);
-        @SuppressLint({"InflateParams", "ViewHolder"}) View view = mInflater.inflate(R.layout.list_item, null);
-
-        ImageView image;
-        image = view.findViewById(R.id.image);
-        image.setImageBitmap(item.image);
-
-        TextView name;
-        name = view.findViewById(R.id.label);
-        name.setText(item.label);
-
-        return view;
+        public CustomViewHolder(View itemView){
+            super(itemView);
+            label = itemView.findViewById(R.id.label);
+            img = itemView.findViewById(R.id.image);
+            cardView = itemView.findViewById(R.id.cardView);
+        }
     }
 }
