@@ -127,18 +127,18 @@ public class HomeFragment extends Fragment {
             }
             if(!questionBank.containsKey(question)){
                 finishQuiz();
-
             } else {
                 if(currentPool.get(0).getAttribute(question).equals("Either")){
-                    questionList[0]="Either";
+                    questionList[0]="Apartment";
                 } else {
                     questionList[0] = currentPool.get(0).getAttribute(question);
                 }
                 if(currentPool.get(1).getAttribute(question).equals("Either")){
-                    questionList[1]="Either";
+                    questionList[1]="Apartment";
                 } else {
-                    questionList[1] = currentPool.get(0).getAttribute(question);
+                    questionList[1] = currentPool.get(pointer).getAttribute(question);
                 }
+
                 pointer = 1;
                 updateButtons();
             }
