@@ -5,6 +5,7 @@
     <string name="title_notifications">Products</string>
     <string name="option_1">Option 1</string>
     <string name="option_2">Option 2</string>
+    <string name="welcome">Welcome to Dogopedia!</string>
 
     <string name="apt_adapt">Apartment Adaptability</string>
     <string name="owner_exp">Good for New Owners</string>

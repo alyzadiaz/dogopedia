@@ -1,8 +1,9 @@
 package com.example.dogopedia.ui.home;
 
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.dogopedia.R;
@@ -20,6 +23,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
+import nl.dionsegijn.konfetti.KonfettiView;
+import nl.dionsegijn.konfetti.models.Shape;
+import nl.dionsegijn.konfetti.models.Size;
+
 public class HomeFragment extends Fragment {
 
 //    private HomeViewModel homeViewModel;
@@ -28,22 +35,38 @@ public class HomeFragment extends Fragment {
     static String question;
     String button1text;
     String button2text;
-    static ArrayList<Dog> currentPool = new ArrayList<Dog>();
-    static HashMap<String, String> questionBank = new HashMap<String,String>();
+    static ArrayList<Dog> currentPool = new ArrayList<>();
+    static HashMap<String, String> questionBank = new HashMap<>();
     static int pointer;
     static Button option1, option2;
     static String[] questionList = new String[3];
     static TextView textView;
     static ImageView imageView;
     static TextView resultView;
+    static CardView resultCard;
+    static CardView welcome;
+    static KonfettiView konfetti;
+    static Shape.DrawableShape drawableShape;
+    static Color k;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-        textView = (TextView) root.findViewById(R.id.text_home);
-        imageView = (ImageView) root.findViewById(R.id.imageView);
-        resultView = (TextView) root.findViewById(R.id.resultView);
+        textView = root.findViewById(R.id.text_home);
+        imageView = root.findViewById(R.id.imageView);
+        resultView = root.findViewById(R.id.resultView);
         resultView.setVisibility(View.GONE);
+
+        final Drawable drawable = ContextCompat.getDrawable(getActivity(), R.drawable.ic_paw_vector);
+        drawableShape = new Shape.DrawableShape(drawable, true);
+
+        resultCard = root.findViewById(R.id.result_card);
+        resultCard.setVisibility(View.GONE);
+        welcome = root.findViewById(R.id.welcome_card);
+        konfetti = root.findViewById(R.id.konfettiView);
+
+        k = new Color();
+
         answer = "";
         question = "";
         button1text = "";
@@ -97,6 +120,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 imageView.setVisibility(View.GONE);
+                welcome.setVisibility(View.GONE);
                 if(currentPool.get(0).getAttribute(question).equals("Either")){
                     option1.setText("Apartment");
                 } else{
@@ -138,22 +162,18 @@ public class HomeFragment extends Fragment {
                 } else {
                     questionList[1] = currentPool.get(pointer).getAttribute(question);
                 }
-
                 pointer = 1;
                 updateButtons();
             }
         } else {
             finishQuiz();
         }
-
     }
-
 
     private static void updateButtons(){
         textView.setText(questionBank.get(question));
         option1.setText(questionList[0]);
         option2.setText(questionList[1]);
-
     }
 
     private static void finishQuiz(){
@@ -170,10 +190,24 @@ public class HomeFragment extends Fragment {
         String placeholder = currentPool.get(place).toString();
         resultView.setText(placeholder);
         resultView.setVisibility(View.VISIBLE);
+        resultCard.setVisibility(View.VISIBLE);
+
+        konfetti.build()
+                .addColors(k.argb(1,111,87,122),
+                        k.argb(1,79,47,45),
+                        k.argb(1,199,184,214))
+                .setDirection(0.0, 359.0)
+                .setSpeed(1f, 5f)
+                .setFadeOutEnabled(true)
+                .setTimeToLive(2000L)
+                .addShapes(Shape.Square.INSTANCE, Shape.Circle.INSTANCE, drawableShape)
+                .addSizes(new Size(20, 6f))
+                .setPosition(-50f, konfetti.getWidth() + 50f, -50f, -50f)
+                .streamFor(300, 5000L);
     }
 
     private static ArrayList<Dog> updatePool(ArrayList<Dog> pool, String question, String answer){
-        List<Dog> list = new ArrayList<Dog>();
+        List<Dog> list = new ArrayList<>();
         if(question.equals("heat") || question.equals("cold")){
             if(answer.equals("Yes")){
                 for(Dog o : pool){
@@ -269,5 +303,4 @@ public class HomeFragment extends Fragment {
         pool.add(FrenchBulldog);
         pool.add(BullDog);
     }
-
 }
