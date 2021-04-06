@@ -137,7 +137,7 @@ public class HomeFragment extends Fragment {
                 if(currentPool.get(1).getAttribute(question).equals("Either")){
                     questionList[1]="Either";
                 } else {
-                    questionList[1] = currentPool.get(0).getAttribute(question);
+                    questionList[1] = currentPool.get(1).getAttribute(question);
                 }
                 pointer = 1;
                 updateButtons();
