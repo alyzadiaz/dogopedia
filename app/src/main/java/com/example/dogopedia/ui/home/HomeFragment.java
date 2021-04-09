@@ -48,6 +48,9 @@ public class HomeFragment extends Fragment {
     static KonfettiView konfetti;
     static Shape.DrawableShape drawableShape;
     static Color k;
+    static Button quizStart;
+    static Boolean finished;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class HomeFragment extends Fragment {
         imageView = root.findViewById(R.id.imageView);
         resultView = root.findViewById(R.id.resultView);
         resultView.setVisibility(View.GONE);
-
+        finished = false;
         final Drawable drawable = ContextCompat.getDrawable(getActivity(), R.drawable.ic_paw_vector);
         drawableShape = new Shape.DrawableShape(drawable, true);
 
@@ -71,37 +74,12 @@ public class HomeFragment extends Fragment {
         question = "";
         button1text = "";
         button2text = "";
-        questionBank.clear();
-        currentPool.clear();
-        pointer = 1;
-        textView.setVisibility(View.GONE);
-        textView.setText("");
-//        homeViewModel =
-//                new ViewModelProvider(this).get(HomeViewModel.class);
-
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
-        questionBank.put("size", "Do you want a large dog or a small dog?");
-        questionBank.put("living", "Do you live in a house or an apartment?");
-        questionBank.put("heat", "Does it get hot where you live?");
-        questionBank.put("exercise", "Willing to do moderate-high exercise?");
-        questionBank.put("groom", "Do you want a dog that is easy to maintain groomed");
-        questionBank.put("alone", "Will your dog be alone for a long time");
-        questionBank.put("experience", "Are you a new or experienced dog owner?");
-        questionBank.put("bark", "Do you mind barking?");
-        questionBank.put("cold", "Does it get cold where you live?");
-        questionBank.put("shedding", "Do you prefer a dog that does not shed?");
-        initialize(currentPool);
-        question = currentPool.get(0).compare(currentPool.get(pointer));
         option1 = (Button) root.findViewById(R.id.button);
         option2 = (Button) root.findViewById(R.id.button2);
-        Button quizStart = (Button) root.findViewById(R.id.button3);
-        option1.setVisibility(View.GONE);
-        option2.setVisibility(View.GONE);
+        quizStart = (Button) root.findViewById(R.id.button3);
+        initialize(currentPool);
+        reset();
+        imageView.setVisibility(View.VISIBLE);
         option1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -119,14 +97,18 @@ public class HomeFragment extends Fragment {
         quizStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                imageView.setVisibility(View.GONE);
                 welcome.setVisibility(View.GONE);
-                if(currentPool.get(0).getAttribute(question).equals("Either")){
+                if (finished) {
+                    initialize(currentPool);
+                    reset();
+                }
+                imageView.setVisibility(View.GONE);
+                if (currentPool.get(0).getAttribute(question).equals("Either")) {
                     option1.setText("Apartment");
-                } else{
+                } else {
                     option1.setText(currentPool.get(0).getAttribute(question));
                 }
-                if(currentPool.get(1).getAttribute(question).equals("Either")){
+                if (currentPool.get(1).getAttribute(question).equals("Either")) {
                     option2.setText("Apartment");
                 } else {
                     option2.setText(currentPool.get(pointer).getAttribute(question));
@@ -136,7 +118,8 @@ public class HomeFragment extends Fragment {
                 textView.setVisibility(View.VISIBLE);
                 textView.setText(questionBank.get(question));
                 quizStart.setVisibility(View.GONE);
-            }
+                }
+
         });
         return root;
     }
@@ -204,6 +187,36 @@ public class HomeFragment extends Fragment {
                 .addSizes(new Size(20, 6f))
                 .setPosition(-50f, konfetti.getWidth() + 50f, -50f, -50f)
                 .streamFor(300, 5000L);
+        finished = true;
+        quizStart.setVisibility(View.VISIBLE);
+        quizStart.setText("Restart Quiz");
+
+    }
+
+    private static void reset(){
+        finished = false;
+        answer = "";
+        question = "";
+        questionBank.clear();
+        resultView.setVisibility(View.GONE);
+        imageView.setVisibility(View.GONE);
+        pointer = 1;
+        textView.setVisibility(View.GONE);
+        textView.setText("");
+        questionBank.put("size", "Do you want a large dog or a small dog?");
+        questionBank.put("living", "Do you live in a house or an apartment?");
+        questionBank.put("heat", "Does it get hot where you live?");
+        questionBank.put("exercise", "Willing to do moderate-high exercise?");
+        questionBank.put("groom", "Do you want a dog that is easy to maintain groomed");
+        questionBank.put("alone", "Will your dog be alone for a long time");
+        questionBank.put("experience", "Are you a new or experienced dog owner?");
+        questionBank.put("bark", "Do you mind barking?");
+        questionBank.put("cold", "Does it get cold where you live?");
+        questionBank.put("shedding", "Do you prefer a dog that does not shed?");
+        question = currentPool.get(0).compare(currentPool.get(pointer));
+        quizStart.setText("Start Quiz");
+        option1.setVisibility(View.GONE);
+        option2.setVisibility(View.GONE);
     }
 
     private static ArrayList<Dog> updatePool(ArrayList<Dog> pool, String question, String answer){
@@ -242,6 +255,7 @@ public class HomeFragment extends Fragment {
     }
 
     private void initialize(ArrayList<Dog> pool){
+        pool.clear();
         Dog LabradorRetriever = new Dog("Labrador Retriever", "Large", "House", "New", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "Yes", BitmapFactory.decodeResource(getResources(), R.drawable.labrador_retriever));
         Dog FrenchBulldog = new Dog("French Bulldog", "Small", "Either", "New", "No", "No","No","Yes","No","Yes","Yes",BitmapFactory.decodeResource(getResources(), R.drawable.french_bulldog));
         Dog GermanShepard = new Dog("German Shepard", "Large", "Either", "Experienced", "No", "Yes", "Yes", "Yes", "Yes", "Yes", "No",BitmapFactory.decodeResource(getResources(), R.drawable.german_shepherd));
