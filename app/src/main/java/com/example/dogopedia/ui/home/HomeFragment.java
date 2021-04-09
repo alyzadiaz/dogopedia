@@ -100,6 +100,7 @@ public class HomeFragment extends Fragment {
                 welcome.setVisibility(View.GONE);
                 if (finished) {
                     initialize(currentPool);
+                    resultCard.setVisibility(View.GONE);
                     reset();
                 }
                 imageView.setVisibility(View.GONE);
@@ -194,6 +195,7 @@ public class HomeFragment extends Fragment {
     }
 
     private static void reset(){
+        konfetti.reset();
         finished = false;
         answer = "";
         question = "";
