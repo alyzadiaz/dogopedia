@@ -26,7 +26,7 @@ public class NotificationsFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
-        List<FoodList> items = new ArrayList<FoodList>();
+        List<FoodList> items = new ArrayList<>();
 
         ListItemsFoodAdapter adapter;
         adapter = new ListItemsFoodAdapter(items);
