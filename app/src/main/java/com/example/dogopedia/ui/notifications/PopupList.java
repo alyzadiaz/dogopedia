@@ -21,7 +21,7 @@ public class PopupList extends PopupWindow{
     public void showPopUpWindow(View view, FoodList item){
         view.getContext();
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        @SuppressLint("InflateParams") View pop = inflater.inflate(R.layout.popup, null);
+        @SuppressLint("InflateParams") View pop = inflater.inflate(R.layout.foodlist, null);
 
         ImageView img;
         TextView name, size, price;

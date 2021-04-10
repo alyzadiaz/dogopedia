@@ -30,17 +30,11 @@ public class NotificationsFragment extends Fragment {
 
         ListItemsFoodAdapter adapter;
         adapter = new ListItemsFoodAdapter(items);
-        RecyclerView recyclerView = root.findViewById(R.id.recycler);
+        RecyclerView recyclerView = root.findViewById(R.id.foodRC);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
-        TextView itemName = root.findViewById(R.id.item_name);
-        TextView itemPrice = root.findViewById(R.id.foodPrice);
-        TextView itemRating = root.findViewById(R.id.foodRating);
-        TextView itemDryOrWet = root.findViewById(R.id.foodDryOrWet);
-        TextView itemProtein = root.findViewById(R.id.proteinValues);
-        TextView itemWeight = root.findViewById(R.id.productWeight);
         return root;
     }
 
