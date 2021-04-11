@@ -14,14 +14,13 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.dogopedia.R;
-import com.example.dogopedia.ui.notifications.FoodList;
 
 public class PopupList extends PopupWindow{
 
-    public void showPopUpWindow(View view, FoodList item){
+    public void showPopUpWindow(View view, ListItem item){
         view.getContext();
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        @SuppressLint("InflateParams") View pop = inflater.inflate(R.layout.foodlist, null);
+        @SuppressLint("InflateParams") View pop = inflater.inflate(R.layout.foodpopup, null);
 
         ImageView img;
         TextView name, size, price;

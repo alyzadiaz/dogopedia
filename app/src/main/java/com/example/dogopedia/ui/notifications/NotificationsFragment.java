@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dogopedia.R;
 
-import com.example.dogopedia.ui.notifications.FoodList;
+import com.example.dogopedia.ui.notifications.ListItem;
 import com.example.dogopedia.ui.notifications.ListItemsFoodAdapter;
 
 import java.util.ArrayList;
@@ -24,9 +24,9 @@ public class NotificationsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
 
-        List<FoodList> items = new ArrayList<>();
+        List<ListItem> items = populateItems();
 
         ListItemsFoodAdapter adapter;
         adapter = new ListItemsFoodAdapter(items);
@@ -38,70 +38,70 @@ public class NotificationsFragment extends Fragment {
         return root;
     }
 
-    public List<FoodList> populateItems(){
-        List<FoodList> allItems = new ArrayList<>();
+    public List<ListItem> populateItems(){
+        List<ListItem> allItems = new ArrayList<>();
 
-        FoodList blue = new FoodList();
+        ListItem blue = new ListItem();
         blue.name = "Blue";
         blue.image = R.drawable.food_blue;
         blue.setItemFields("Blue", "$15.33", "4.3 Stars", "Dry");
         allItems.add(blue);
 
-        FoodList cesar = new FoodList();
+        ListItem cesar = new ListItem();
         cesar.name = "Cesar";
         cesar.image = R.drawable.food_cesar;
         cesar.setItemFields("Cesar", "$12.63", "4.1 Stars", "Dry");
         allItems.add(cesar);
 
-        FoodList hills = new FoodList();
+        ListItem hills = new ListItem();
         hills.name = "Hills";
         hills.image = R.drawable.food_hills;
         hills.setItemFields("Hills", "$10.03", "4.3 Stars", "Wet");
         allItems.add(hills);
 
-        FoodList iams = new FoodList();
+        ListItem iams = new ListItem();
         iams.name = "Iams";
         iams.image = R.drawable.food_iams;
         iams.setItemFields("Iams", "$20.30", "4.3 Stars", "Dry");
         allItems.add(iams);
 
-        FoodList nutro = new FoodList();
+        ListItem nutro = new ListItem();
         nutro.name = "Nutro";
         nutro.image = R.drawable.food_nutro;
         nutro.setItemFields("Nutro", "$9.40", "3.4 Stars", "Dry");
         allItems.add(nutro);
 
-        FoodList pedigreedry = new FoodList();
+        ListItem pedigreedry = new ListItem();
         pedigreedry.name = "Dry Pedigree";
         pedigreedry.image = R.drawable.food_pedigreedry;
         pedigreedry.setItemFields("Dry Pedigree", "$9.54", "4.4 Stars", "Dry");
         allItems.add(pedigreedry);
 
-        FoodList pedigreewet = new FoodList();
+        ListItem pedigreewet = new ListItem();
         pedigreewet.name = "Wet Pedigree";
         pedigreewet.image = R.drawable.food_pedigreewet;
         pedigreewet.setItemFields("Wet Pedigree", "$20.66", "4.8 Stars", "Wet");
         allItems.add(pedigreewet);
 
-        FoodList tasteofwild = new FoodList();
+        ListItem tasteofwild = new ListItem();
         tasteofwild.name = "Taste of Wild";
         tasteofwild.image = R.drawable.food_tasteofwild;
         tasteofwild.setItemFields("Taste of Wild", "$10.36", "4.2 Stars", "Dry");
         allItems.add(tasteofwild);
 
-        FoodList ultra = new FoodList();
+        ListItem ultra = new ListItem();
         ultra.name = "Ultra";
         ultra.image = R.drawable.food_ultra;
         ultra.setItemFields("Ultra", "$11.99", "4.3 Stars", "Dry");
         allItems.add(ultra);
 
-        FoodList wellnesswet = new FoodList();
+        ListItem wellnesswet = new ListItem();
         wellnesswet.name = "Wet Wellness";
         wellnesswet.image = R.drawable.food_wellnesswet;
         wellnesswet.setItemFields("Wet Wellness", "$23.64", "4.7 Stars", "Wet");
         allItems.add(wellnesswet);
 
-        FoodList weruva = new FoodList();
+        ListItem weruva = new ListItem();
         weruva.name = "Weruva";
         weruva.image = R.drawable.food_weruva ;
         weruva.setItemFields("Weruva", "$13.66", "4.3 Stars", "Dry");

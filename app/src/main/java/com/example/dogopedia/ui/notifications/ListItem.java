@@ -1,9 +1,7 @@
 
 package com.example.dogopedia.ui.notifications;
 
-import android.graphics.Bitmap;
-
-public class FoodList {
+public class ListItem {
     public int image;
     public String name, price, rating, dryOrWet;
 

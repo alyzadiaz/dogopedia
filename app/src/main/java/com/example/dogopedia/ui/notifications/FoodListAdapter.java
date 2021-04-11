@@ -9,36 +9,33 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.dogopedia.R;
-import com.example.dogopedia.ui.dashboard.ListItem;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-class ListItemsFoodAdapter extends RecyclerView.Adapter<com.example.dogopedia.ui.notifications.ListItemsFoodAdapter.CustomViewHolder> {
-    //private LayoutInflater mInflater;
-    private final List<FoodList> c;
+class ListItemsFoodAdapter extends RecyclerView.Adapter<ListItemsFoodAdapter.CustomViewHolder> {
 
+    private final List<ListItem> c;
 
-    public ListItemsFoodAdapter(List<FoodList> cards) {
+    public ListItemsFoodAdapter(List<ListItem> cards) {
 
         this.c = cards;
     }
     @NotNull
-
     @Override
-    public CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.foodlist, parent, false);
+    public ListItemsFoodAdapter.CustomViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.foodlist_item, parent, false);
         return new CustomViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
-        final FoodList card = c.get(position);
+    public void onBindViewHolder(@NonNull ListItemsFoodAdapter.CustomViewHolder holder, final int position) {
+
+        final ListItem card = c.get(position);
         holder.lbl.setText(card.name);
         holder.img.setBackgroundResource(card.image);
-
-        holder.cv.setOnClickListener(v -> {
+        holder.view.setOnClickListener(v -> {
             PopupList popup = new PopupList();
             popup.showPopUpWindow(v, card);
         });
@@ -53,13 +50,13 @@ class ListItemsFoodAdapter extends RecyclerView.Adapter<com.example.dogopedia.ui
     public static class CustomViewHolder extends RecyclerView.ViewHolder{
         private final TextView lbl;
         private final ImageView img;
-        private final CardView cv;
+        private final CardView view;
 
         public CustomViewHolder(View itemView){
             super(itemView);
-            lbl = itemView.findViewById(R.id.item_name);
-            img = itemView.findViewById(R.id.item_img);
-            cv = itemView.findViewById(R.id.cardView);
+            lbl = itemView.findViewById(R.id.ListItemlbl);
+            img = itemView.findViewById(R.id.ListItemimg);
+            view = itemView.findViewById(R.id.ListItemCV);
         }
     }
 }
