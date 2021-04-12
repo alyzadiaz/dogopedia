@@ -23,23 +23,38 @@ public class PopupList extends PopupWindow{
         @SuppressLint("InflateParams") View pop = inflater.inflate(R.layout.foodpopup, null);
 
         ImageView img;
-        TextView name, size, price;
-        RatingBar rating;
+        TextView name, price, rating, dryOrWet, protein, weight;
 
         img = pop.findViewById(R.id.item_img);
         img.setBackgroundResource(item.image);
 
         name = pop.findViewById(R.id.item_name);
         name.setText(item.name);
+
         price = pop.findViewById(R.id.foodPrice);
         price.setText(item.price);
+
+        rating = pop.findViewById(R.id.foodRating);
+        rating.setText(item.rating);
+
+        dryOrWet = pop.findViewById(R.id.foodDryOrWet);
+        dryOrWet.setText(item.dryOrWet);
+
+        protein = pop.findViewById(R.id.proteinValue);
+        protein.setText(item.protein);
+
+        weight = pop.findViewById(R.id.productWeight);
+        weight.setText(item.weight);
 
 
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
 
+
+
         PopupWindow popupWindow = new PopupWindow(pop, width, height, true);
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
 
         pop.setOnTouchListener(new View.OnTouchListener() {
             @Override

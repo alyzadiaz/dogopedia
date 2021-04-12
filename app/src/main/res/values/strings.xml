@@ -25,5 +25,6 @@
     <string name="proteinValue">Protein Value: </string>
     <string name="weight">Product Weight: </string>
     <string name="img_descr">Displays an image of the item.</string>
+    <string name="link">Link to Purchas e Item: </string>
 
 </resources>
