@@ -1,4 +1,4 @@
-package com.example.dogopedia.ui.dashboard;
+package com.example.dogopedia.ui.dogs;
 
 import android.view.LayoutInflater;
 import android.view.View;

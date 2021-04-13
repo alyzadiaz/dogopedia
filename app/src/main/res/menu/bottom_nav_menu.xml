@@ -16,4 +16,9 @@
         android:icon="@drawable/bone"
         android:title="@string/title_notifications" />
 
+    <item
+        android:id="@+id/navigation_adoption"
+        android:icon="@drawable/heart"
+        android:title="@string/adopt"/>
+
 </menu>

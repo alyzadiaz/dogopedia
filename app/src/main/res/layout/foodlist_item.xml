@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f9f4f5"
+    android:orientation="horizontal"
+    android:padding="15dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ListItemCV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#c8b8d8"
+        app:cardCornerRadius="25dp"
+        app:contentPadding="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="80dip"
+                android:layout_height="80dip"
+                app:cardCornerRadius="25sp">
+
+                <ImageView
+                    android:id="@+id/ListItemimg"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#C8B8D8" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/ListItemlbl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:padding="20dp"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
+
