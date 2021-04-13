@@ -21,7 +21,6 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cv"
                 android:layout_width="200dip"
                 android:layout_height="200dip"
                 android:layout_gravity="center"
@@ -35,25 +34,30 @@
                 app:cardCornerRadius="20dp">
 
                 <ImageView
-                    android:id="@+id/item_img"
+                    android:id="@+id/toy_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="@string/img_descr"
-                    android:foregroundGravity="center"
+                    android:contentDescription="@string/img_desc"
                     android:padding="30dp"
                     tools:srcCompat="@tools:sample/avatars" />
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/item_name"
+                android:id="@+id/toy_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:padding="5dp"
                 android:textSize="18sp" />
 
+            <TextView
+                android:id="@+id/toy_brand"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal" />
+
             <RatingBar
-                android:id="@+id/foodRating"
+                android:id="@+id/toy_ratingBar"
                 style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -73,7 +77,7 @@
                     android:gravity="center_horizontal">
 
                     <TextView
-                        android:id="@+id/price"
+                        android:id="@+id/toy_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
@@ -82,33 +86,9 @@
                         android:textSize="15sp" />
 
                     <TextView
-                        android:id="@+id/foodPrice"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/toy_price_value"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:isIndicator="true"
-                        android:textSize="15sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="172dp"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal">
-
-                    <TextView
-                        android:id="@+id/DryOrWett"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        android:text="@string/dryOrWet"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/foodDryOrWet"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
                         android:textSize="15sp" />
 
                 </TableRow>
@@ -119,20 +99,39 @@
                     android:gravity="center_horizontal">
 
                     <TextView
-                        android:id="@+id/protein"
+                        android:id="@+id/toy_type"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="@string/proteinValue"
+                        android:text="@string/toy_type"
                         android:textSize="15sp" />
 
                     <TextView
-                        android:id="@+id/proteinValue"
+                        android:id="@+id/toy_type_value"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/squeak"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
+                        android:text="@string/squeak"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/is_squeaky"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:textSize="15sp" />
 
                 </TableRow>
@@ -143,20 +142,18 @@
                     android:gravity="center_horizontal">
 
                     <TextView
-                        android:id="@+id/weight"
+                        android:id="@+id/dimensions"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:text="@string/weight"
+                        android:text="@string/prod_dims"
                         android:textSize="15sp" />
 
                     <TextView
-                        android:id="@+id/productWeight"
-                        android:layout_width="wrap_content"
+                        android:id="@+id/dims"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
                         android:textSize="15sp" />
                 </TableRow>
             </TableLayout>

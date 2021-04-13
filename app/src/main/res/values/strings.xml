@@ -19,12 +19,18 @@
 
     <string name="img_desc">Dog</string>
 
-    <string name="dryOrWet">"Dry/Wet: </string>
-    <string name="price">Price: </string>
-    <string name="rating">Rating: </string>
-    <string name="proteinValue">Protein Value: </string>
-    <string name="weight">Product Weight: </string>
+    <string name="dryOrWet">"Dry/Wet:</string>
+    <string name="price">Price:</string>
+    <string name="rating">Rating:</string>
+    <string name="proteinValue">Protein Value:</string>
+    <string name="weight">Product Weight:</string>
     <string name="img_descr">Displays an image of the item.</string>
-    <string name="link">Link to Purchas e Item: </string>
+    <string name="link">Link to Purchase Item:</string>
+
+    <string name="food_tab">Food</string>
+    <string name="toy_tab">Toys</string>
+    <string name="toy_type">Type:</string>
+    <string name="squeak">Is this toy squeaky?</string>
+    <string name="prod_dims">Product Dimensions</string>
 
 </resources>
