@@ -1,4 +1,4 @@
-package com.example.dogopedia.ui.notifications;
+package com.example.dogopedia.ui.products;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,7 +21,7 @@ public class NotificationsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_notifications, container, false);
+        View root = inflater.inflate(R.layout.fragment_products, container, false);
 
         List<ListItem> food = populateFoodItems();
         ListItemsFoodAdapter foodAdapter;

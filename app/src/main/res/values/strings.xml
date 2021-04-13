@@ -31,6 +31,11 @@
     <string name="toy_tab">Toys</string>
     <string name="toy_type">Type:</string>
     <string name="squeak">Is this toy squeaky?</string>
-    <string name="prod_dims">Product Dimensions</string>
+    <string name="prod_dims">Product Dimensions:</string>
+
+    <string name="adopt">Adoption</string>
+    <string name="petFinderTab">PetFinder</string>
+    <string name="aspcaTab">ASPCA</string>
+    <string name="adoptApetTab">Adopt a Pet</string>
 
 </resources>

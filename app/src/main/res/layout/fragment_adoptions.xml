@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraint"
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
+    android:layout_height="match_parent"
+    tools:context=".ui.adoption.AdoptionFragment">
 
     <LinearLayout
-        android:id="@+id/linear"
+        android:id="@+id/switchSite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/snow"
@@ -20,15 +18,15 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/foodTab"
+            android:id="@+id/petFinder_button"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/food_tab"
+            android:background="@color/snow"
+            android:text="@string/petFinderTab"
             android:textColor="@color/dark_byzantium"
-            app:backgroundTint="@color/snow"
-            app:iconTint="@color/snow" />
+            app:backgroundTint="@color/snow" />
 
         <View
             android:layout_width="1dp"
@@ -36,55 +34,59 @@
             android:background="@color/dark_byzantium" />
 
         <Button
-            android:id="@+id/toyTab"
+            android:id="@+id/aspca_button"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/toy_tab"
+            android:text="@string/aspcaTab"
             android:textColor="@color/dark_byzantium"
-            app:backgroundTint="@color/snow"
-            app:iconTint="@color/snow" />
+            app:backgroundTint="@color/snow" />
 
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/dark_byzantium" />
+
+        <Button
+            android:id="@+id/adoptApet_button"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/adoptApetTab"
+            android:textColor="@color/dark_byzantium"
+            app:backgroundTint="@color/snow" />
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/food_frame"
+    <WebView
+        android:id="@+id/petFinder_webView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear">
+        app:layout_constraintTop_toBottomOf="@id/switchSite" >
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/foodRC"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear">
+    </WebView>
 
-        </androidx.recyclerview.widget.RecyclerView>
-
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/toy_frame"
+    <WebView
+        android:id="@+id/aspca_webView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear">
+        app:layout_constraintTop_toBottomOf="@id/switchSite" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/toyRC"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="visible" />
-    </FrameLayout>
+    <WebView
+        android:id="@+id/adoptApet_webView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/switchSite" />
 </androidx.constraintlayout.widget.ConstraintLayout>

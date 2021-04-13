@@ -1,4 +1,4 @@
-package com.example.dogopedia.ui.notifications;
+package com.example.dogopedia.ui.products;
 
 import android.view.LayoutInflater;
 import android.view.View;

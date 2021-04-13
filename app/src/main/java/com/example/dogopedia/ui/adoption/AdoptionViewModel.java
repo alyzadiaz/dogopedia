@@ -1,16 +1,16 @@
-package com.example.dogopedia.ui.dashboard;
+package com.example.dogopedia.ui.adoption;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class DashboardViewModel extends ViewModel {
+public class AdoptionViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public DashboardViewModel() {
+    public AdoptionViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is dashboard fragment");
+        mText.setValue("This is adoption fragment");
     }
 
     public LiveData<String> getText() {

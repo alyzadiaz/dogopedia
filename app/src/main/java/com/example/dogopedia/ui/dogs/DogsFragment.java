@@ -1,4 +1,4 @@
-package com.example.dogopedia.ui.dashboard;
+package com.example.dogopedia.ui.dogs;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,12 +15,12 @@ import com.example.dogopedia.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DashboardFragment extends Fragment {
+public class DogsFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        View root = inflater.inflate(R.layout.fragment_dogs, container, false);
 
         List<ListItem> doggies = populateDogs();
 

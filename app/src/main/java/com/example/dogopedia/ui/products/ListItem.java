@@ -1,4 +1,4 @@
-package com.example.dogopedia.ui.notifications;
+package com.example.dogopedia.ui.products;
 
 public class ListItem {
     public int image;

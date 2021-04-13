@@ -1,4 +1,4 @@
-package com.example.dogopedia.ui.notifications;
+package com.example.dogopedia.ui.products;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,38 +13,41 @@ import android.widget.TextView;
 
 import com.example.dogopedia.R;
 
-public class PopupList extends PopupWindow{
+public class ToyPopup extends PopupWindow{
 
     @SuppressLint("ClickableViewAccessibility")
-    public void showPopUpWindow(View view, ListItem item){
+    public void showPopUpWindow(View view, ToyListItem item){
         view.getContext();
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        @SuppressLint("InflateParams") View pop = inflater.inflate(R.layout.foodpopup, null);
+        @SuppressLint("InflateParams") View pop = inflater.inflate(R.layout.toy_popup, null);
 
         ImageView img;
-        TextView name, price, dryOrWet, protein, weight;
-        RatingBar rating;
+        TextView brand, name, price, squeaky, dimensions, type;
+        RatingBar r;
 
-        img = pop.findViewById(R.id.item_img);
+        img = pop.findViewById(R.id.toy_image);
         img.setBackgroundResource(item.image);
 
-        name = pop.findViewById(R.id.item_name);
+        brand = pop.findViewById(R.id.toy_brand);
+        brand.setText(item.brand);
+
+        name = pop.findViewById(R.id.toy_name);
         name.setText(item.name);
 
-        price = pop.findViewById(R.id.foodPrice);
+        price = pop.findViewById(R.id.toy_price_value);
         price.setText(item.price);
 
-        rating = pop.findViewById(R.id.foodRating);
-        rating.setRating(item.rating);
+        squeaky = pop.findViewById(R.id.is_squeaky);
+        squeaky.setText(item.squeaky);
 
-        dryOrWet = pop.findViewById(R.id.foodDryOrWet);
-        dryOrWet.setText(item.dryOrWet);
+        dimensions = pop.findViewById(R.id.dims);
+        dimensions.setText(item.dims);
 
-        protein = pop.findViewById(R.id.proteinValue);
-        protein.setText(item.protein);
+        type = pop.findViewById(R.id.toy_type_value);
+        type.setText(item.type);
 
-        weight = pop.findViewById(R.id.productWeight);
-        weight.setText(item.weight);
+        r = pop.findViewById(R.id.toy_ratingBar);
+        r.setRating(item.rating);
 
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
