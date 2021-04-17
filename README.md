@@ -1,4 +1,5 @@
 [![Contributors][contributors-shield]][contributors-url]
+[![Release][release-shield]][release-url]
 
 <!-- LOGO -->
 <br/>
@@ -67,3 +68,5 @@ Aless Mangialardo - mangialardoa@wit.edu
 
 [contributors-shield]: https://img.shields.io/github/contributors/alyzadiaz/dogopedia.svg?style=for-the-badge
 [contributors-url]: https://github.com/alyzadiaz/dogopedia/graphs/contributors
+[release-shield]:https://img.shields.io/github/v/release/alyzadiaz/dogopedia?style=for-the-badge
+[release-url]:https://github.com/alyzadiaz/dogopedia/releases
