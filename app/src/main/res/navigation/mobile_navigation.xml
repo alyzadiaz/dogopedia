@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.dogopedia.ui.home.HomeFragment"
+        android:name="pets.dogopedia.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.dogopedia.ui.dogs.DogsFragment"
+        android:name="pets.dogopedia.ui.dogs.DogsFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dogs" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.dogopedia.ui.products.NotificationsFragment"
+        android:name="pets.dogopedia.ui.products.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_products" />
 
     <fragment
         android:id="@+id/navigation_adoption"
-        android:name="com.example.dogopedia.ui.adoption.AdoptionFragment"
+        android:name="pets.dogopedia.ui.adoption.AdoptionFragment"
         android:label="Adoption"
         tools:layout="@layout/fragment_adoptions"/>
 </navigation>
