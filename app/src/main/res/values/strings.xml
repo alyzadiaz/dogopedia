@@ -38,4 +38,10 @@
     <string name="aspcaTab">ASPCA</string>
     <string name="adoptApetTab">Adopt a Pet</string>
 
+    <string name="dog_desc">Dog</string>
+    <string name="food_desc">Dog Food</string>
+    <string name="toy_desc">Dog Toy</string>
+
+    <string name="start_q">Start Quiz</string>
+
 </resources>
