@@ -65,6 +65,8 @@ Aless Mangialardo - mangialardoa@wit.edu
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [DogTime](https://dogtime.com/)
+* [Img Shields](https://shields.io)
+* [Google Play Store](https://play.google.com/store)
 
 [contributors-shield]: https://img.shields.io/github/contributors/alyzadiaz/dogopedia.svg?style=for-the-badge
 [contributors-url]: https://github.com/alyzadiaz/dogopedia/graphs/contributors
