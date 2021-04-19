@@ -50,8 +50,7 @@ Sometimes people get a dog without researching the breed and there is the possib
 
 ## Live Version
 Find our app on the Google Play Store! <br/>
-<img src="app_images/gp_badge.png" width="200">
-
+<a href="https://play.google.com/store/apps/details?id=pets.dogopedia"><img src="app_images/gp_badge.png" width="200"></a>
 
 <!-- CONTACT -->
 ## Contact
